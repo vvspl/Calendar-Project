@@ -11,7 +11,7 @@ const Navigation = ({ weekDates }) => {
       dayDate.getYear() === new Date().getYear(),
   );
 
-  let clsNam = '';
+  let isToday = false;
 
   return (
     <header className="calendar__header">
@@ -19,11 +19,11 @@ const Navigation = ({ weekDates }) => {
         <div className="calendar__day-label day-label" >
              {
           dayDate.getDate() === new Date().getDate() && isCurrentDateOnPage
-            ? (clsNam = 'day-label__day-name-now')
-            : (clsNam = 'day-label__day-name')
+            ? isToday = true
+            : isToday = false
           }
-          <span className={clsNam}>{days[dayDate.getDay()]}</span>
-          <span className="day-label__day-number">{dayDate.getDate()}</span>
+          <span className={isToday? 'day-label__day-name-now' : 'day-label__day-name'}>{days[dayDate.getDay()]}</span>
+          <span className={isToday? "day-label__day-number-now": "day-label__day-number"}>{dayDate.getDate()}</span>
         </div>
       ))}
     </header>

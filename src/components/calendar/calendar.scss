@@ -66,6 +66,10 @@
 
     &__day-number {
         font-size: 22px;
+        &-now{
+            color:rgb(255, 136, 0);
+            font-weight: bold;
+        }
     }
 }
 
