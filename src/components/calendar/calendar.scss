@@ -58,6 +58,10 @@
     &__day-name {
         font-size: 14px;
         text-transform: uppercase;
+        &-now{
+            color:rgb(255, 136, 0);
+            font-weight: bold;
+        }
     }
 
     &__day-number {
