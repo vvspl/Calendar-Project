@@ -4,7 +4,7 @@ import React from 'react';
 import { days } from '../../utils/dateUtils.js';
 
 const Navigation = ({ weekDates }) => {
-  let isCurrentDateOnPage = weekDates.some(
+  let isCurrentDateOnPage = weekDates.some(  // есть ли дата сегодняшнего дня на экране
     dayDate =>
       dayDate.getDate() === new Date().getDate() &&
       dayDate.getMonth() === new Date().getMonth() &&
