@@ -8,8 +8,6 @@ const Day = ({ dataDay, dayEvents }) => {
     .fill()
     .map((val, index) => index);
 
-    console.log(dayEvents);
-
   return (
     <div className="calendar__day" data-day={dataDay}>
       {hours.map((hour) => {

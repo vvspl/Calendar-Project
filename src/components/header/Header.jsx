@@ -7,7 +7,7 @@ import "./header.scss";
 const Header = (props) => {
   return (
     <header className="header">
-      <button className="button create-event-btn">
+      <button className="button create-event-btn" onClick={()=>props.onCreate()}>
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
       <div className="navigation">
