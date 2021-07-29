@@ -1,4 +1,4 @@
-const events = [
+let events = [
   {
     id: 1,
     title: "Go to the gym",
