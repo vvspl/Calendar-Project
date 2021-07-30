@@ -1,16 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import Day from "../day/Day";
 
 import "./week.scss";
 
 const Week = ({ weekDates, events }) => {
 
-  console.log('weekEvents: ', events);
-
-  let [renderPage, setRenderPage] = useState(false);
-  const forceRender = () => {
-    setRenderPage((renderPage = !renderPage));
-  };
 
   return (
     <div className="calendar__week">
@@ -29,7 +23,6 @@ const Week = ({ weekDates, events }) => {
             key={dayStart.getDate()}
             dataDay={dayStart.getDate()}
             dayEvents={dayEvents}
-            forceRender={forceRender}
           />
         );
       })}

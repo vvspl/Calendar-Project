@@ -19,7 +19,7 @@ const Day = ({ dataDay, dayEvents, forceRender }) => {
             key={dataDay + hour}
             dataHour={hour}
             hourEvents={hourEvents}
-            forceRender={forceRender}
+            dataDay={dataDay}
           />
         );
       })}

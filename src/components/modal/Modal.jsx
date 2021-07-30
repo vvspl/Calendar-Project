@@ -1,4 +1,3 @@
-import { props } from 'bluebird';
 import React from 'react';
 import events from '../../gateway/events.js';
 import {addEvent} from '../../gateway/eventsGateway.jsx';

@@ -11,20 +11,21 @@ const Calendar = props => {
   // let [event, setEvent] = useState(events);
   let [events, setEvents] = useState([]);
 
+  const ShowEvents =()=> fetchEventsList().then(response =>
+    setEvents(
+      response.map(({ dateFrom, dateTo, ...rest }) => ({
+        dateFrom: new Date(dateFrom),
+        dateTo: new Date(dateTo),
+        ...rest,
+      })),
+    ),
+  );
+
   useEffect(() => {
-    fetchEventsList().then(response =>
-      setEvents(
-        response.map(({dateFrom, dateTo, ...rest}) => ({
-          dateFrom: new Date(dateFrom),
-          dateTo: new Date(dateTo),
-          ...rest,
-        })),
-      ),
-    );
+    ShowEvents();
   }, []);
 
-  console.log('CalendarEvents', events);
-
+ 
   const { weekDates } = props;
 
   return (
