@@ -1,53 +1,34 @@
 import React from 'react';
 import events from '../../gateway/events.js';
-import {addEvent} from '../../gateway/eventsGateway.jsx';
+import { addEvent } from '../../gateway/eventsGateway.jsx';
 import './modal.scss';
 
 const Modal = props => {
-  
   const createEvent = event => {
     event.preventDefault();
     const formData = Object.fromEntries(new FormData(event.target));
 
-addEvent({
-  id: events.length + 1,
-  title: formData.title,
-  description: formData.description,
-  dateFrom: new Date(
-    new Date(formData.date).getFullYear(),
-    new Date(formData.date).getMonth(),
-    new Date(formData.date).getDate(),
-    formData.startTime.substring(0,2),
-    formData.startTime.substring(3,5),
-  ),
-  dateTo: new Date(
-    new Date(formData.date).getFullYear(),
-    new Date(formData.date).getMonth(),
-    new Date(formData.date).getDate(),
-    formData.endTime.substring(0,2),
-    formData.endTime.substring(3,5),
-  ),
-});
-    // events.push({
-    //   id: events.length + 1,
-    //   title: formData.title,
-    //   description: formData.description,
-    //   dateFrom: new Date(
-    //     new Date(formData.date).getFullYear(),
-    //     new Date(formData.date).getMonth(),
-    //     new Date(formData.date).getDate(),
-    //     formData.startTime.substring(0,2),
-    //     formData.startTime.substring(3,5),
-    //   ),
-    //   dateTo: new Date(
-    //     new Date(formData.date).getFullYear(),
-    //     new Date(formData.date).getMonth(),
-    //     new Date(formData.date).getDate(),
-    //     formData.endTime.substring(0,2),
-    //     formData.endTime.substring(3,5),
-    //   ),
-    // } );
+    addEvent({
+      // id: events.length + 1,
+      title: formData.title,
+      description: formData.description,
+      dateFrom: new Date(
+        new Date(formData.date).getFullYear(),
+        new Date(formData.date).getMonth(),
+        new Date(formData.date).getDate(),
+        formData.startTime.substring(0, 2),
+        formData.startTime.substring(3, 5),
+      ),
+      dateTo: new Date(
+        new Date(formData.date).getFullYear(),
+        new Date(formData.date).getMonth(),
+        new Date(formData.date).getDate(),
+        formData.endTime.substring(0, 2),
+        formData.endTime.substring(3, 5),
+      ),
+    });
     props.closeModal();
+    props.showEvents();
   };
   return (
     <div className="modal overlay">

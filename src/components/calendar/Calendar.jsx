@@ -8,10 +8,10 @@ import Modal from '../modal/Modal';
 import './calendar.scss';
 
 const Calendar = props => {
-  // let [event, setEvent] = useState(events);
+  
   let [events, setEvents] = useState([]);
 
-  const ShowEvents =()=> fetchEventsList().then(response =>
+  const showEvents =()=> fetchEventsList().then(response =>
     setEvents(
       response.map(({ dateFrom, dateTo, ...rest }) => ({
         dateFrom: new Date(dateFrom),
@@ -22,7 +22,7 @@ const Calendar = props => {
   );
 
   useEffect(() => {
-    ShowEvents();
+    showEvents();
   }, []);
 
  
@@ -35,7 +35,7 @@ const Calendar = props => {
         <div className="calendar__week-container">
           <Sidebar />
           <Week weekDates={weekDates} events={events} />
-          {props.isOpened ? <Modal closeModal={() => props.onClose()} /> : <></>}
+          {props.isOpened ? <Modal closeModal={() => props.onClose()} showEvents={showEvents} /> : <></>}
         </div>
       </div>
     </section>
