@@ -1,6 +1,6 @@
 import React from 'react';
-import events from '../../gateway/events.js';
 import { addEvent } from '../../gateway/eventsGateway.jsx';
+import PropTypes from 'prop-types';
 import './modal.scss';
 
 const Modal = props => {
@@ -9,7 +9,6 @@ const Modal = props => {
     const formData = Object.fromEntries(new FormData(event.target));
 
     addEvent({
-      // id: events.length + 1,
       title: formData.title,
       description: formData.description,
       dateFrom: new Date(
@@ -26,9 +25,8 @@ const Modal = props => {
         formData.endTime.substring(0, 2),
         formData.endTime.substring(3, 5),
       ),
-    });
+    }).then(() => props.showEvents());
     props.closeModal();
-    props.showEvents();
   };
   return (
     <div className="modal overlay">
@@ -52,7 +50,6 @@ const Modal = props => {
                 required="required"
                 name="startTime"
                 className="event-form__field"
-                // onChange={handleChange}
               />
               <span>-</span>
               <input type="time" required="required" name="endTime" className="event-form__field" />
@@ -70,6 +67,11 @@ const Modal = props => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  showEvents: PropTypes.func.isRequired,
 };
 
 export default Modal;

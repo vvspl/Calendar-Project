@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import events from '../../gateway/events';
 import { deleteEvent } from '../../gateway/eventsGateway';
+import PropTypes from 'prop-types';
 import './event.scss';
 
-const Event = ({ k, height, marginTop, title, time, forceRender }) => {
+const Event = ({ k, height, marginTop, title, time, showEvents }) => {
   const eventStyle = {
     height,
     marginTop,
@@ -18,26 +18,10 @@ const Event = ({ k, height, marginTop, title, time, forceRender }) => {
   };
 
     const deleteEvents = () => {
-      deleteEvent(k);
+      deleteEvent(k).then(()=>showEvents());
       setShowDelBtn(showDelBtn = false);
-      // forceRender();
     };
   
-
-
-  // const deleteEvent = () => {
-
-  // let index = events.indexOf(events.filter(el=>el.id===k));
-  // console.log('index', index);
-  //   let index = null;
-  //   for (let i=0; i<events.length; i+=1){
-  //     if (events[i].id===k) index=i;
-  //   }
-  //  events.splice(index,1);
-  //   setShowDelBtn(showDelBtn = false);
-  //   forceRender();
-  // };
-
   return (
     <div style={eventStyle} className="event" onClick={showDeletePopup}>
       <div className="event__title">{title}</div>
@@ -49,6 +33,15 @@ const Event = ({ k, height, marginTop, title, time, forceRender }) => {
       )}
     </div>
   );
+};
+
+Event.propTypes = {
+  k: PropTypes.string.isRequired,
+  height: PropTypes.number.isRequired,
+  marginTop: PropTypes.number.isRequired,
+  title: PropTypes.string,
+  time: PropTypes.string,
+  showEvents: PropTypes.func.isRequired,
 };
 
 export default Event;

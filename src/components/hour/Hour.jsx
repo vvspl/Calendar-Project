@@ -1,26 +1,23 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Event from '../event/Event';
 import { formatMins } from '../../../src/utils/dateUtils.js';
+import PropTypes from 'prop-types';
 
-const Hour = ({ dataHour, hourEvents, dataDay}) => {
-
-  let [margin, setMargin] = useState(0)
+const Hour = ({ dataHour, hourEvents, dataDay, showEvents }) => {
+  let [margin, setMargin] = useState(0);
 
   useEffect(() => {
     let interval = setInterval(() => {
-      setMargin(margin = new Date().getMinutes()), 60000;
+      setMargin((margin = new Date().getMinutes())), 60000;
     }, 1000);
 
-    return () =>
-      clearInterval(interval);
+    return () => clearInterval(interval);
   }, []);
-
-
 
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
-      {(dataHour === new Date().getHours())&&(dataDay === new Date().getDate()) ? (
-        <div className="red-line" style={{ marginTop: margin}}></div>
+      {dataHour === new Date().getHours() && dataDay === new Date().getDate() ? (
+        <div className="red-line" style={{ marginTop: margin }}></div>
       ) : (
         <></>
       )}
@@ -39,11 +36,19 @@ const Hour = ({ dataHour, hourEvents, dataDay}) => {
             marginTop={dateFrom.getMinutes()}
             time={`${eventStart} - ${eventEnd}`}
             title={title}
+            showEvents={showEvents}
           />
         );
       })}
     </div>
   );
+};
+
+Hour.propTypes = {
+  dataHour: PropTypes.number.isRequired,
+  hourEvents: PropTypes.array.isRequired,
+  dataDay: PropTypes.number.isRequired,
+  showEvents: PropTypes.func.isRequired,
 };
 
 export default Hour;
