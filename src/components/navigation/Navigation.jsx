@@ -16,7 +16,7 @@ const Navigation = ({ weekDates }) => {
   return (
     <header className="calendar__header">
       {weekDates.map(dayDate => (
-        <div className="calendar__day-label day-label" >
+        <div className="calendar__day-label day-label" key={Math.random()}>
              {
           dayDate.getDate() === new Date().getDate() && isCurrentDateOnPage   // changing style of today's day
             ? isToday = true
