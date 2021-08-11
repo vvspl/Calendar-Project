@@ -8,6 +8,8 @@ const Modal = props => {
     event.preventDefault();
     const formData = Object.fromEntries(new FormData(event.target));
 
+    const formDate = new Date(form.Data.date);
+
     addEvent({
       title: formData.title,
       description: formData.description,

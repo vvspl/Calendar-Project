@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
-// import events from '../../gateway/events';
 import { fetchEventsList } from '../../gateway/eventsGateway.jsx';
 import Modal from '../modal/Modal';
 import PropTypes from 'prop-types';

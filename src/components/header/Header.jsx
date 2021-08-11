@@ -1,25 +1,35 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './header.scss';
 
-import "./header.scss";
-
-const Header = (props) => {
+const Header = props => {
   return (
     <header className="header">
-      <button className="button create-event-btn" onClick={()=>props.onCreate()}>
+      <button className="button create-event-btn" onClick={() => props.onCreate()}>
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
       <div className="navigation">
-        <button className="navigation__today-btn button" onClick={()=>props.backToCurrentDate()}>Today</button>
-        <button className="icon-button navigation__nav-icon" onClick={()=>props.prevWeek()}>
+        <button className="navigation__today-btn button" onClick={() => props.backToCurrentDate()}>
+          Today
+        </button>
+        <button className="icon-button navigation__nav-icon" onClick={() => props.prevWeek()}>
           <i className="fas fa-chevron-left"></i>
         </button>
-        <button className="icon-button navigation__nav-icon" onClick={()=>props.nextWeek()}>
+        <button className="icon-button navigation__nav-icon" onClick={() => props.nextWeek()}>
           <i className="fas fa-chevron-right"></i>
         </button>
         <span className="navigation__displayed-month">{props.currentMonth}</span>
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  nextWeek: PropTypes.func.isRequired,
+  prevWeek: PropTypes.func.isRequired,
+  backToCurrentDate: PropTypes.func.isRequired,
+  currentMonth: PropTypes.string.isRequired,
+  onCreate: PropTypes.func.isRequired,
 };
 
 export default Header;

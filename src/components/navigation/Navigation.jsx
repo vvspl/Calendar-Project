@@ -17,10 +17,10 @@ const Navigation = ({ weekDates }) => {
       {weekDates.map(dayDate => (
         <div className="calendar__day-label day-label" key={Math.random()}>
              {
-          dayDate.getDate() === new Date().getDate() && isCurrentDateOnPage   // changing style of today's day
-            ? isToday = true
-            : isToday = false
-          }
+              dayDate.getDate() === new Date().getDate() && isCurrentDateOnPage   // changing style of today's day
+               ? isToday = true
+               : isToday = false
+              }
           <span className={isToday? 'day-label__day-name-now' : 'day-label__day-name'}>{days[dayDate.getDay()]}</span>
           <span className={isToday? "day-label__day-number-now": "day-label__day-number"}>{dayDate.getDate()}</span>
         </div>
