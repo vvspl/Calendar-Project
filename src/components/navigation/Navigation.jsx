@@ -11,16 +11,16 @@ const Navigation = ({ weekDates }) => {
   );
 
   let isToday = false;
+  const isTodayDate = (date)=>{
+    if (date=== new Date().getDate() && isCurrentDateOnPage ) return true;
+    return false;
+  }
 
   return (
     <header className="calendar__header">
       {weekDates.map(dayDate => (
         <div className="calendar__day-label day-label" key={Math.random()}>
-             {
-              dayDate.getDate() === new Date().getDate() && isCurrentDateOnPage   // changing style of today's day
-               ? isToday = true
-               : isToday = false
-              }
+             { isToday = isTodayDate(dayDate.getDate()) }
           <span className={isToday? 'day-label__day-name-now' : 'day-label__day-name'}>{days[dayDate.getDay()]}</span>
           <span className={isToday? "day-label__day-number-now": "day-label__day-number"}>{dayDate.getDate()}</span>
         </div>
